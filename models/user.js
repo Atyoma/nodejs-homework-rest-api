@@ -24,13 +24,12 @@ const userSchema = new Schema(
     },
     token: {
       type: String,
-      default: null,
+      default: "",
     },
 
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
-      required: true,
     },
   },
   { versionKey: false, timestamps: true }
@@ -42,10 +41,7 @@ const registerSchema = joi.object({
   email: joi.string().required(),
   password: joi.string().required(),
   repeat_password: joi.ref("password"),
-  subscription: joi
-    .string()
-    .valueOf(...subscriptionList)
-    .required(),
+  subscription: joi.string().valueOf(...subscriptionList),
 });
 
 const loginSchema = joi.object({

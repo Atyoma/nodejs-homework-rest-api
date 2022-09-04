@@ -6,7 +6,7 @@ const { controllerWrapper } = require("../../helpers");
 
 const controller = require("../../controllers/auth");
 
-const { validationBody, authenticate } = require("../../middlewars");
+const { validationBody, authenticate, upload } = require("../../middlewars");
 
 const { schemas } = require("../../models/user");
 
@@ -23,5 +23,11 @@ router.post(
 );
 
 router.get("/logout", authenticate, controllerWrapper(controller.logout));
+router.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  controllerWrapper(controller.updateAvatar)
+);
 
 module.exports = router;

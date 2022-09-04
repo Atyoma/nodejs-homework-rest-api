@@ -22,11 +22,14 @@ const userSchema = new Schema(
       enum: subscriptionList,
       default: "starter",
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
     token: {
       type: String,
       default: "",
     },
-
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",

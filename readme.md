@@ -29,3 +29,32 @@
 - `npm run start:dev` &mdash; старт сервера в режимі розробки (development)
 - `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
 - `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
+
+SENGRID_CODE
+
+<!-- echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env -->
+
+npm install --save @sendgrid/mail
+
+// using Twilio SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
+javascript
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const msg = {
+to: 'test@example.com', // Change to your recipient
+from: 'test@example.com', // Change to your verified sender
+subject: 'Sending with SendGrid is Fun',
+text: 'and easy to do anywhere, even with Node.js',
+html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
+sgMail
+.send(msg)
+.then(() => {
+console.log('Email sent')
+})
+.catch((error) => {
+console.error(error)
+})

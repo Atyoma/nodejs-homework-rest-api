@@ -32,12 +32,6 @@
 
 SENGRID_CODE
 
-<!-- echo "export SENDGRID_API_KEY='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'" > sendgrid.env
-echo "sendgrid.env" >> .gitignore
-source ./sendgrid.env -->
-
-npm install --save @sendgrid/mail
-
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 javascript
